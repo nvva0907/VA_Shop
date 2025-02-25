@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 /**
- * @property string $name
  * @property string $code
+ * @property string $attribute_code
+ * @property string $value
  */
-class Category extends Model
+class AttributeValue extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
+    protected $table = 'attribute_values';
 
     protected $fillable = [
-        'name',
-        'code'
+        'code',
+        'attribute_code',
+        'value'
     ];
 }

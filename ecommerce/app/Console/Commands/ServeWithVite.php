@@ -12,6 +12,14 @@ class ServeWithVite extends Command
 
     public function handle()
     {
+        // Tự động tạo & cập nhật database
+        $this->info("🔄 Tạo và cập nhật database...");
+        $migrateProcess = new Process(['php', 'artisan', 'make:auto-migration']);
+        $migrateProcess->setTimeout(null);
+        $migrateProcess->run(function ($type, $buffer) {
+            echo $buffer;
+        });
+        sleep(5); // Chờ tự động tạo & cập nhật database
         $this->info("Đang khởi chạy Laravel...");
 
         // Chạy Laravel
