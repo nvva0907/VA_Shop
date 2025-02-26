@@ -12,8 +12,8 @@ class ProductList extends Component
     {
         $products = DB::select("
     SELECT 
-        p.id,
-        p.name,
+        p.id AS product_id,
+        p.name AS product_name,
         p.image,
         p.description,
         JSON_ARRAYAGG(
@@ -22,8 +22,10 @@ class ProductList extends Component
                 'attributes', (
                     SELECT JSON_ARRAYAGG(
                         JSON_OBJECT(
-                            'attribute_code', at.code, 
-                            'value', av.value
+                            'attribute_code', at.code,
+                            'value', av.value,
+                            'code', av.code,
+                            'name', av.name
                         )
                     ) 
                     FROM product_variant_attributes pva

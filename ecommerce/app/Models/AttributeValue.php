@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $code
  * @property string $attribute_code
  * @property string $value
+ * @property string $name
  */
 class AttributeValue extends Model
 {
@@ -17,7 +18,8 @@ class AttributeValue extends Model
 
     protected $fillable = [
         'code',
+        'name',
         'attribute_code',
-        'value'
+        'value',
     ];
 }
